@@ -1,0 +1,54 @@
+.movies-container data-controller="movie"
+  .movies-sidebar
+    .movies-search
+      span.movies-search-title Buscar pelicula
+      input.movie-search-input data-action="keyup->movie#searchByTitle"
+    .movies-generes
+      .movies-generes-title Seleccionar genero
+      - Genre.all.each do |item|
+        .movie-genre-item data-action="click->movie#searchByGenre"
+          = item.genre
+
+  .movies-body-container
+    .movies-grid
+      - @posts.each do |movie|
+        .movie-card data-movie-id=movie.id.to_s data-action="click->movie#displayDetails"
+          img.movie-thumbnail src=movie.thumbnail_url
+          .movie-title = movie.title
+          .movie-year = movie.release_date.year
+          .movie-card-details
+            h1 = movie.title
+            .movie-item
+              span = "#{movie.release_date.year} - #{movie.movie_type} - #{movie.rated} - #{movie.duration}"
+            .movie-item
+              span Sinopsis:
+              div = movie.detail
+            .movie-item2
+              span Director:
+              div = movie.director
+            .movie-item2
+              span Genre:
+              div = movie.genre
+            .movie-item2
+              span Language:
+              div = movie.language
+            .movie-item2
+              span Origin Country:
+              div = movie.origin_countries
+            .movie-item2
+              span Production Companies:
+              div = movie.production_companies.map{|p| p.values.join(",")}.join(",")
+            .movie-item2
+              span Distribution Companies:
+              div = movie.distributors.map{|d| d.values.join(",")}.join(",")
+            .movie-item2
+              span Sucursal:
+              div = movie.sucursal
+            .movie-item2
+              span Cantidad en Stock:
+              div = movie.cantStock
+
+    .movie-details-container.hidden
+      .movie-background-container
+        .movie-background-shadow
+        .movie-background-image

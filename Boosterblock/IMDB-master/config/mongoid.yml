@@ -1,0 +1,8 @@
+development:
+  clients:
+    default:
+      #uri: mongodb+srv://user:pass@yourcluster.mongodb.net/blog_development?retryWrites=true&w=majority
+      uri: mongodb+srv://QEliwO4MiOp6oeAV:3soJjdORjzwC6UxJ@cluster0.k31hb.mongodb.net/test?authSource=admin&replicaSet=atlas-pefn1v-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
+      options:
+        server_selection_timeout: 5
+
